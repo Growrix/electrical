@@ -1,7 +1,13 @@
 @import "tailwindcss";
 
+/* ============================================================
+   LIGHT THEME — default tokens (Tailwind v4 @theme)
+   All utilities like bg-primary, text-foreground, etc. resolve
+   to these CSS variables via var(). Overriding them in .dark
+   automatically updates every Tailwind utility — no hardcoding.
+   ============================================================ */
 @theme {
-  /* Colors */
+  /* Brand */
   --color-primary: #1e3a5f;
   --color-primary-light: #2a5296;
   --color-primary-foreground: #ffffff;
@@ -9,11 +15,18 @@
   --color-secondary-foreground: #1e3a5f;
   --color-accent: #ea580c;
   --color-accent-foreground: #ffffff;
+
+  /* Semantic */
   --color-background: #f8fafc;
   --color-surface: #ffffff;
   --color-border: #e2e8f0;
+  --color-foreground: #0f172a;
   --color-muted: #64748b;
   --color-muted-foreground: #f1f5f9;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+
+  /* Status */
   --color-success: #16a34a;
   --color-success-foreground: #ffffff;
   --color-warning: #d97706;
@@ -22,11 +35,8 @@
   --color-error-foreground: #ffffff;
   --color-info: #0284c7;
   --color-info-foreground: #ffffff;
-  --color-foreground: #0f172a;
-  --color-card: #ffffff;
-  --color-card-foreground: #0f172a;
 
-  /* Spacing (additional) */
+  /* Spacing */
   --spacing-18: 4.5rem;
   --spacing-22: 5.5rem;
 
@@ -43,7 +53,7 @@
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-overlay: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-overlay: 0 20px 25px -5px rgb(0 0 0 / 0.15), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
   /* Font */
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
@@ -55,7 +65,56 @@
   --duration-slow: 400ms;
 }
 
-/* Base */
+/* ============================================================
+   DARK THEME — override every CSS variable.
+   Because Tailwind v4 utilities resolve to var(--color-*),
+   changing these variables here updates all utilities globally.
+   No per-component overrides, no hardcoded dark: classes needed.
+   ============================================================ */
+.dark {
+  /* Brand — primary becomes near-black with high contrast */
+  --color-primary: #0d0d0d;
+  --color-primary-light: #1c1c1c;
+  --color-primary-foreground: #f0f0f0;
+
+  /* Secondary stays amber — electric & bold on dark backgrounds */
+  --color-secondary: #f59e0b;
+  --color-secondary-foreground: #0d0d0d;
+
+  /* Accent stays energetic orange */
+  --color-accent: #f97316;
+  --color-accent-foreground: #0d0d0d;
+
+  /* Semantic surfaces */
+  --color-background: #080808;
+  --color-surface: #111111;
+  --color-border: #272727;
+  --color-foreground: #ededed;
+  --color-muted: #888888;
+  --color-muted-foreground: #1e1e1e;
+  --color-card: #161616;
+  --color-card-foreground: #ededed;
+
+  /* Status — slightly brightened for dark bg legibility */
+  --color-success: #22c55e;
+  --color-success-foreground: #0d0d0d;
+  --color-warning: #fbbf24;
+  --color-warning-foreground: #0d0d0d;
+  --color-error: #ef4444;
+  --color-error-foreground: #ffffff;
+  --color-info: #38bdf8;
+  --color-info-foreground: #0d0d0d;
+
+  /* Shadows — deeper on dark to stay visible */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+  --shadow-overlay: 0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.6);
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -70,11 +129,24 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--duration-base), color var(--duration-base);
+}
+
+/* Smooth theme transition on all elements */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: var(--duration-base);
+  transition-timing-function: ease;
+}
+
+/* But don't transition everything on page load (only when theme changes) */
+.no-transition, .no-transition * {
+  transition: none !important;
 }
 
 /* Focus visible */
 :focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-secondary);
   outline-offset: 2px;
 }
 
@@ -102,7 +174,7 @@ body {
   height: auto;
   padding: 0.5rem 1rem;
   background: var(--color-primary);
-  color: #ffffff;
+  color: var(--color-primary-foreground);
   font-weight: 600;
   z-index: 9999;
 }
@@ -112,14 +184,17 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-muted-foreground);
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-muted-foreground); }
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);
   border-radius: 3px;
 }
+
+/* Scrollbar hide utility */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar { display: none; }

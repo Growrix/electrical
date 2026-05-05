@@ -7,6 +7,7 @@ import { Footer } from "@/components/shell/footer";
 import { MobileBottomNav } from "@/components/shell/mobile-bottom-nav";
 import { FloatingActions } from "@/components/shell/floating-actions";
 import { AIAssistant } from "@/components/shell/ai-assistant";
+import { ThemeProvider } from "@/providers/theme-provider";
 import { useState } from "react";
 
 const geistSans = Geist({
@@ -19,48 +20,61 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-function RootLayoutInner({ children }: { children: React.ReactNode }) {
+/**
+ * Inline script injected into <head> — runs synchronously before paint to
+ * restore the user's saved theme and prevent any flash of wrong theme (FOWT).
+ * Must be a raw string so it is never touched by React hydration.
+ */
+const themeInitScript = `
+(function(){
+  try {
+    var stored = localStorage.getItem('powerpro-theme');
+    var isDark =
+      stored === 'dark' ||
+      ((!stored || stored === 'system') &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (isDark) document.documentElement.classList.add('dark');
+  } catch(e) {}
+})();
+`;
+
+function AppShell({ children }: { children: React.ReactNode }) {
   const [assistantOpen, setAssistantOpen] = useState(false);
 
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-background">
-        {/* Skip link */}
-        <a href="#main-content" className="skip-link">Skip to main content</a>
+    <body className="min-h-full flex flex-col bg-background text-foreground">
+      {/* Skip link */}
+      <a href="#main-content" className="skip-link">Skip to main content</a>
 
-        <AnnouncementStrip />
-        <Header />
+      <AnnouncementStrip />
+      <Header />
 
-        <main id="main-content" className="flex-1 flex flex-col pb-16 lg:pb-0">
-          {children}
-        </main>
+      <main id="main-content" className="flex-1 flex flex-col pb-16 lg:pb-0">
+        {children}
+      </main>
 
-        <Footer />
+      <Footer />
 
-        {/* Mobile bottom nav */}
-        <MobileBottomNav onAssistantOpen={() => setAssistantOpen(true)} />
+      {/* Mobile bottom nav */}
+      <MobileBottomNav onAssistantOpen={() => setAssistantOpen(true)} />
 
-        {/* Floating call/WhatsApp */}
-        <FloatingActions />
+      {/* Floating WhatsApp + Call */}
+      <FloatingActions />
 
-        {/* AI Assistant */}
-        <AIAssistant isOpen={assistantOpen} onClose={() => setAssistantOpen(false)} />
+      {/* AI Assistant drawer */}
+      <AIAssistant isOpen={assistantOpen} onClose={() => setAssistantOpen(false)} />
 
-        {/* AI assistant button (desktop) */}
-        {!assistantOpen && (
-          <button
-            onClick={() => setAssistantOpen(true)}
-            aria-label="Open AI assistant"
-            className="fixed bottom-6 right-20 z-40 hidden lg:flex items-center gap-2 bg-primary text-white px-4 py-2.5 rounded-pill shadow-lg hover:bg-primary-light transition-all hover:scale-105 text-sm font-semibold"
-          >
-            <span aria-hidden="true">🤖</span> Ask Assistant
-          </button>
-        )}
-      </body>
-    </html>
+      {/* Desktop AI assistant button */}
+      {!assistantOpen && (
+        <button
+          onClick={() => setAssistantOpen(true)}
+          aria-label="Open AI assistant"
+          className="fixed bottom-6 right-20 z-40 hidden lg:flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2.5 rounded-pill shadow-lg hover:bg-primary-light transition-all hover:scale-105 text-sm font-semibold"
+        >
+          <span aria-hidden="true">🤖</span> Ask Assistant
+        </button>
+      )}
+    </body>
   );
 }
 
@@ -69,5 +83,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <RootLayoutInner>{children}</RootLayoutInner>;
+  return (
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Anti-flash script: runs before first paint to restore theme */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <ThemeProvider>
+        <AppShell>{children}</AppShell>
+      </ThemeProvider>
+    </html>
+  );
 }
