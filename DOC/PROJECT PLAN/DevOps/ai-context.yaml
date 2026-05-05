@@ -1,0 +1,5 @@
+version: 1
+folder: DOC/PROJECT PLAN/DevOps
+active_doc: DOC/PROJECT PLAN/DevOps/electrical-devops-plan.md
+must_read:
+  - DOC/PROJECT PLAN/electrical-service-website-e2e-plan.md

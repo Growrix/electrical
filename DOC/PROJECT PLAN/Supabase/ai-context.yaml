@@ -1,0 +1,5 @@
+version: 1
+folder: DOC/PROJECT PLAN/Supabase
+active_doc: DOC/PROJECT PLAN/Supabase/electrical-supabase-plan.md
+must_read:
+  - DOC/PROJECT PLAN/API and Data/electrical-api-data-plan.md

@@ -1,0 +1,6 @@
+version: 1
+folder: DOC/PROJECT PLAN/QA
+active_doc: DOC/PROJECT PLAN/QA/electrical-qa-plan.md
+must_read:
+  - DOC/PROJECT PLAN/electrical-service-website-e2e-plan.md
+  - DOC/PROJECT PLAN/Security/electrical-security-plan.md

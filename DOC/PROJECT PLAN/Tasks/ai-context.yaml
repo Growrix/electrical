@@ -1,0 +1,6 @@
+version: 1
+folder: DOC/PROJECT PLAN/Tasks
+purpose: Execution tracker for active planning and downstream implementation sequencing.
+active_tracker: DOC/PROJECT PLAN/Tasks/tasks.md
+depends_on:
+  - DOC/PROJECT PLAN/electrical-service-website-e2e-plan.md

@@ -1,0 +1,53 @@
+version: 1
+project:
+  name: Electrical Service Company Website
+  canonical_plan: DOC/PROJECT PLAN/electrical-service-website-e2e-plan.md
+  planning_mode: fresh
+  status: planning-active
+  last_updated: 2026-05-05
+
+entrypoints:
+  start_here:
+    - DOC/PROJECT PLAN/ai-context.yaml
+    - DOC/PROJECT PLAN/README.md
+    - DOC/PROJECT PLAN/electrical-service-website-e2e-plan.md
+
+active_artifacts:
+  canonical:
+    - DOC/PROJECT PLAN/electrical-service-website-e2e-plan.md
+  downstream_role_docs:
+    - DOC/PROJECT PLAN/Shared Contracts/electrical-shared-contracts-plan.md
+    - DOC/PROJECT PLAN/Frontend/electrical-frontend-plan.md
+    - DOC/PROJECT PLAN/Frontend/Pages/ai-context.yaml
+    - DOC/PROJECT PLAN/Frontend/Pages/README.md
+    - DOC/PROJECT PLAN/Backend/electrical-backend-plan.md
+    - DOC/PROJECT PLAN/API and Data/electrical-api-data-plan.md
+    - DOC/PROJECT PLAN/Supabase/electrical-supabase-plan.md
+    - DOC/PROJECT PLAN/Admin Dashboard/electrical-admin-ops-plan.md
+    - DOC/PROJECT PLAN/Security/electrical-security-plan.md
+    - DOC/PROJECT PLAN/DevOps/electrical-devops-plan.md
+    - DOC/PROJECT PLAN/QA/electrical-qa-plan.md
+
+required_read_order:
+  - DOC/PROJECT PLAN/ai-context.yaml
+  - DOC/PROJECT PLAN/README.md
+  - DOC/PROJECT PLAN/Tasks/ai-context.yaml
+  - DOC/PROJECT PLAN/Tasks/tasks.md
+  - DOC/PROJECT PLAN/Shared Contracts/ai-context.yaml
+  - DOC/PROJECT PLAN/Frontend/ai-context.yaml
+  - DOC/PROJECT PLAN/Backend/ai-context.yaml
+  - DOC/PROJECT PLAN/API and Data/ai-context.yaml
+  - DOC/PROJECT PLAN/Supabase/ai-context.yaml
+  - DOC/PROJECT PLAN/Admin Dashboard/ai-context.yaml
+  - DOC/PROJECT PLAN/Security/ai-context.yaml
+  - DOC/PROJECT PLAN/DevOps/ai-context.yaml
+  - DOC/PROJECT PLAN/QA/ai-context.yaml
+  - DOC/Universal/Template/e2e-planning-template.md
+
+global_invariants:
+  - Contract-first sequencing is mandatory.
+  - Next.js, React, TypeScript, Sanity, Supabase, PostgreSQL are core stack.
+  - Mobile app-like bottom navigation with icons is mandatory.
+  - Floating WhatsApp and call actions are mandatory for conversion paths.
+  - AI chat assistant includes disclosure and human escalation path.
+  - Footer copyright must be: "© {year} {Company Name or Site Name}. All right reserved. Built & Maintenece by Growrix OS."

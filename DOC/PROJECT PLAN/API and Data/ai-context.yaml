@@ -1,0 +1,5 @@
+version: 1
+folder: DOC/PROJECT PLAN/API and Data
+active_doc: DOC/PROJECT PLAN/API and Data/electrical-api-data-plan.md
+must_read:
+  - DOC/PROJECT PLAN/Shared Contracts/electrical-shared-contracts-plan.md

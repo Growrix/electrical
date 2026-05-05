@@ -1,0 +1,9 @@
+version: 1
+folder: DOC/PROJECT PLAN/Frontend
+active_doc: DOC/PROJECT PLAN/Frontend/electrical-frontend-plan.md
+must_read:
+  - DOC/PROJECT PLAN/Shared Contracts/electrical-shared-contracts-plan.md
+  - DOC/PROJECT PLAN/Frontend/Pages/ai-context.yaml
+page_pack:
+  root: DOC/PROJECT PLAN/Frontend/Pages
+  human_index: DOC/PROJECT PLAN/Frontend/Pages/README.md

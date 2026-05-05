@@ -1,0 +1,5 @@
+version: 1
+folder: DOC/PROJECT PLAN/Shared Contracts
+active_doc: DOC/PROJECT PLAN/Shared Contracts/electrical-shared-contracts-plan.md
+must_read:
+  - DOC/PROJECT PLAN/electrical-service-website-e2e-plan.md

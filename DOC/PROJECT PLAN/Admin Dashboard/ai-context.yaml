@@ -1,0 +1,6 @@
+version: 1
+folder: DOC/PROJECT PLAN/Admin Dashboard
+active_doc: DOC/PROJECT PLAN/Admin Dashboard/electrical-admin-ops-plan.md
+must_read:
+  - DOC/PROJECT PLAN/Shared Contracts/electrical-shared-contracts-plan.md
+  - DOC/PROJECT PLAN/API and Data/electrical-api-data-plan.md

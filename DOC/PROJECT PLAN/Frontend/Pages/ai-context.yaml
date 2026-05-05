@@ -1,0 +1,22 @@
+version: 1
+folder: DOC/PROJECT PLAN/Frontend/Pages
+purpose: Full page-by-page frontend implementation planning pack.
+read_order:
+  - DOC/PROJECT PLAN/Frontend/electrical-frontend-plan.md
+  - DOC/PROJECT PLAN/Frontend/Pages/README.md
+  - DOC/PROJECT PLAN/Frontend/Pages/global-shell-and-navigation.md
+  - DOC/PROJECT PLAN/Frontend/Pages/home-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/services-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/service-detail-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/testimonials-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/case-studies-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/case-study-detail-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/blog-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/blog-detail-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/catalog-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/about-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/faq-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/contact-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/privacy-policy-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/terms-of-service-page.md
+  - DOC/PROJECT PLAN/Frontend/Pages/not-found-page.md
