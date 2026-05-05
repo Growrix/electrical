@@ -58,22 +58,11 @@ function AppShell({ children }: { children: React.ReactNode }) {
       {/* Mobile bottom nav */}
       <MobileBottomNav onAssistantOpen={() => setAssistantOpen(true)} />
 
-      {/* Floating WhatsApp + Call */}
-      <FloatingActions />
+      {/* Floating collapsible FAB: WhatsApp, Call, AI Assistant */}
+      <FloatingActions onAssistantOpen={() => setAssistantOpen(true)} />
 
       {/* AI Assistant drawer */}
       <AIAssistant isOpen={assistantOpen} onClose={() => setAssistantOpen(false)} />
-
-      {/* Desktop AI assistant button */}
-      {!assistantOpen && (
-        <button
-          onClick={() => setAssistantOpen(true)}
-          aria-label="Open AI assistant"
-          className="fixed bottom-6 right-20 z-40 hidden lg:flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2.5 rounded-pill shadow-lg hover:bg-primary-light transition-all hover:scale-105 text-sm font-semibold"
-        >
-          <span aria-hidden="true">🤖</span> Ask Assistant
-        </button>
-      )}
     </body>
   );
 }

@@ -12,7 +12,7 @@ const variantStyles: Record<string, string> = {
   primary: "bg-primary text-white hover:bg-primary-light active:opacity-90 shadow-sm",
   secondary: "bg-secondary text-secondary-foreground hover:bg-amber-400 active:opacity-90 shadow-sm",
   accent: "bg-accent text-white hover:bg-orange-600 active:opacity-90 shadow-sm",
-  outline: "border-2 border-primary text-primary hover:bg-primary hover:text-white",
+  outline: "border-2 border-border text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary",
   ghost: "text-primary hover:bg-primary/10",
   danger: "bg-error text-white hover:bg-red-700",
 };

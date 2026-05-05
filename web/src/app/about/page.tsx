@@ -103,13 +103,13 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {mockTeam.map((member) => (
               <article key={member.name} className="rounded-xl border border-border bg-surface p-5 text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center text-3xl mx-auto mb-3" aria-hidden="true">👷</div>
+                <div className="w-16 h-16 rounded-full bg-secondary/10 text-secondary flex items-center justify-center text-3xl mx-auto mb-3" aria-hidden="true">👷</div>
                 <h3 className="font-black text-foreground text-base">{member.name}</h3>
                 <p className="text-secondary text-xs font-semibold mt-0.5 mb-3">{member.role}</p>
                 <p className="text-xs text-muted leading-relaxed mb-3">{member.bio}</p>
                 <div className="flex flex-wrap gap-1 justify-center">
                   {member.certifications.slice(0, 2).map((cert) => (
-                    <span key={cert} className="text-[10px] bg-primary/10 text-primary rounded-pill px-2 py-0.5 font-medium">{cert}</span>
+                    <span key={cert} className="text-[10px] bg-border text-foreground rounded-pill px-2 py-0.5 font-medium">{cert}</span>
                   ))}
                 </div>
               </article>
@@ -125,7 +125,7 @@ export default function AboutPage() {
           <p className="text-muted text-sm mb-6">We serve the following cities and surrounding areas. Contact us to confirm your address.</p>
           <div className="flex flex-wrap gap-3 justify-center">
             {siteConfig.serviceAreas.map((area) => (
-              <span key={area} className="px-4 py-2 bg-primary/10 text-primary rounded-xl text-sm font-semibold">📍 {area}</span>
+              <span key={area} className="px-4 py-2 bg-secondary/10 text-secondary rounded-xl text-sm font-semibold">📍 {area}</span>
             ))}
           </div>
         </div>

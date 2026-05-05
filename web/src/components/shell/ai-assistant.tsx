@@ -119,7 +119,7 @@ export function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
               className={cn(
                 "max-w-[85%] rounded-xl px-3 py-2 text-sm leading-relaxed",
                 msg.role === "user"
-                  ? "bg-primary text-white rounded-br-sm"
+                  ? "bg-foreground text-background rounded-br-sm"
                   : "bg-background text-foreground rounded-bl-sm border border-border"
               )}
             >
@@ -137,7 +137,7 @@ export function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
             <button
               key={chip.label}
               onClick={() => handleChip(chip)}
-              className="text-xs px-2.5 py-1.5 rounded-pill bg-primary/10 text-primary hover:bg-primary/20 transition-colors border border-primary/20"
+              className="text-xs px-2.5 py-1.5 rounded-pill bg-surface text-foreground hover:bg-border transition-colors border border-border"
             >
               {chip.label}
             </button>
@@ -164,7 +164,7 @@ export function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type a message..."
             aria-label="Message to assistant"
-            className="flex-1 h-8 rounded-lg border border-border bg-background px-2.5 text-xs focus:outline-none focus:border-primary"
+            className="flex-1 h-8 rounded-lg border border-border bg-background text-foreground px-2.5 text-xs focus:outline-none focus:border-secondary"
           />
           <Button type="submit" size="sm" className="h-8 px-3 text-xs" disabled={!input.trim()}>
             Send
