@@ -74,11 +74,10 @@ export function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
       role="dialog"
       aria-modal="true"
       aria-label="AI Assistant"
-      className="fixed bottom-24 right-4 lg:bottom-6 lg:right-20 z-50 w-[340px] max-w-[calc(100vw-2rem)] rounded-2xl border border-border bg-surface shadow-overlay flex flex-col"
-      style={{ height: 480 }}
+      className="fixed inset-0 lg:inset-auto lg:bottom-6 lg:right-20 z-50 lg:w-[340px] lg:max-w-[calc(100vw-2rem)] lg:rounded-2xl lg:h-[480px] border border-border bg-surface shadow-overlay flex flex-col"
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-primary rounded-t-2xl">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-primary lg:rounded-t-2xl flex-shrink-0">
         <div className="flex items-center gap-2">
           <span className="flex items-center justify-center w-7 h-7 rounded-full bg-secondary text-primary text-sm font-black">⚡</span>
           <div>
@@ -89,9 +88,9 @@ export function AIAssistant({ isOpen, onClose }: AIAssistantProps) {
         <button
           onClick={onClose}
           aria-label="Close assistant"
-          className="text-white/70 hover:text-white transition-colors p-1"
+          className="text-white/70 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/10"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M18 6L6 18M6 6l12 12" />
           </svg>
         </button>
