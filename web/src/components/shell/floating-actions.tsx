@@ -13,7 +13,7 @@ export function FloatingActions({ onAssistantOpen }: FloatingActionsProps) {
   return (
     <div
       aria-label="Quick contact actions"
-      className="fixed right-4 bottom-20 lg:bottom-6 z-40 flex flex-col items-end gap-3"
+      className="hidden lg:flex fixed right-4 bottom-6 z-40 flex-col items-end gap-3"
     >
       {/* Expandable action items */}
       <div
