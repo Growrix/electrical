@@ -38,19 +38,24 @@ export function Header() {
           <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1">
             {siteConfig.nav.map((item) => {
               const active =
-                pathname === item.href || pathname.startsWith(item.href + "/");
+                item.href === "/" ? pathname === "/" : pathname.startsWith(item.href + "/");
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "px-3 py-1.5 text-sm font-medium rounded-md transition-colors",
+                    "flex items-center gap-1 px-3 py-1.5 text-sm font-medium rounded-md transition-colors",
                     active
                       ? "text-secondary bg-secondary/10"
                       : "text-foreground hover:text-secondary hover:bg-secondary/10"
                   )}
                 >
+                  {item.href === "/" && (
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                  )}
                   {item.label}
                 </Link>
               );
@@ -148,19 +153,24 @@ export function Header() {
             className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-1"
           >
             {siteConfig.nav.map((item) => {
-              const active = pathname === item.href;
+              const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href + "/");
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
-                    "px-3 py-2.5 text-sm font-medium rounded-lg transition-colors",
+                    "flex items-center gap-2 px-3 py-2.5 text-sm font-medium rounded-lg transition-colors",
                     active
                       ? "text-secondary bg-secondary/10"
                       : "text-foreground hover:text-secondary hover:bg-secondary/10"
                   )}
                 >
+                  {item.href === "/" && (
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                  )}
                   {item.label}
                 </Link>
               );
