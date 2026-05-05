@@ -47,7 +47,7 @@ export function MobileBottomNav({ onAssistantOpen }: MobileBottomNavProps) {
       aria-label="Mobile bottom navigation"
       className="fixed bottom-0 inset-x-0 z-50 lg:hidden bg-surface border-t border-border pb-safe shadow-overlay"
     >
-      <div className="flex items-stretch h-16">
+      <div className="grid grid-cols-5 h-16">
         {siteConfig.mobileNav.map((item) => {
           const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
 
@@ -58,7 +58,7 @@ export function MobileBottomNav({ onAssistantOpen }: MobileBottomNavProps) {
                 onClick={onAssistantOpen}
                 aria-label="Open AI assistant"
                 className={cn(
-                  "flex flex-1 flex-col items-center justify-center gap-0.5 text-muted hover:text-primary transition-colors"
+                  "flex flex-col items-center justify-center gap-0.5 text-muted hover:text-secondary transition-colors"
                 )}
               >
                 <NavIcon icon={item.icon} />
@@ -75,7 +75,7 @@ export function MobileBottomNav({ onAssistantOpen }: MobileBottomNavProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={item.label}
-                className="flex flex-1 flex-col items-center justify-center gap-0.5 text-success hover:text-green-700 transition-colors"
+                className="flex flex-col items-center justify-center gap-0.5 text-success hover:text-green-700 transition-colors"
               >
                 <NavIcon icon={item.icon} />
                 <span className="text-[10px] font-medium">{item.label}</span>
@@ -89,8 +89,8 @@ export function MobileBottomNav({ onAssistantOpen }: MobileBottomNavProps) {
               href={item.href}
               aria-current={isActive ? "page" : undefined}
               className={cn(
-                "flex flex-1 flex-col items-center justify-center gap-0.5 transition-colors",
-                isActive ? "text-primary" : "text-muted hover:text-primary"
+                "flex flex-col items-center justify-center gap-0.5 transition-colors",
+                isActive ? "text-secondary" : "text-muted hover:text-secondary"
               )}
             >
               <NavIcon icon={item.icon} />

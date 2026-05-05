@@ -16,6 +16,7 @@ export const siteConfig = {
     brandHref: "https://www.growrixos.com",
   },
   nav: [
+    { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
     { label: "Case Studies", href: "/case-studies" },
     { label: "Blog", href: "/blog" },
